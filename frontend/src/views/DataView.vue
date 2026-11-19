@@ -85,22 +85,28 @@ const scenarios = computed(() => store.scenarios.map((scenario) => ({
         <h1><strong>Data</strong></h1>
         <p class="font-medium">현재 공개된 시나리오와 태스크 정보를 확인하세요.</p>
       </div>
-      <button class="primary-button compact" type="button" :disabled="store.loading" @click="store.load">
-        새로고침
-      </button>
-    </div>
-    <section class="panel">
-      <div class="panel-heading-row">
-        <h2><strong>정적 공개 데이터</strong></h2>
-        <a v-if="releasePageUrl" :href="releasePageUrl" target="_blank" rel="noopener noreferrer" class="table-action">
-          릴리즈 보기
+      <div class="data-page-actions">
+        <a
+          v-if="releasePageUrl"
+          :href="releasePageUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="data-page-action release-shortcut"
+        >
+          <AppIcon name="file" :size="17" />
+          릴리즈 바로가기
         </a>
+        <button
+          class="data-page-action refresh-action"
+          type="button"
+          :disabled="store.loading"
+          @click="store.load"
+        >
+          <AppIcon name="database" :size="17" />
+          새로고침
+        </button>
       </div>
-      <p>
-        이 페이지는 서버나 로그인 없이 <code>public/data/tasks.json</code>을 읽어 표시합니다. 
-        다운로드가 표시된 태스크에서는 공개 ZIP 자료를 받을 수 있습니다.
-      </p>
-    </section>
+    </div>
     <div class="toolbar">
       <label class="search-box">
         <AppIcon name="search" />
