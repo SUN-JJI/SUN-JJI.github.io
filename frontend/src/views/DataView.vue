@@ -102,7 +102,6 @@ const scenarios = computed(() => store.scenarios.map((scenario) => ({
           :disabled="store.loading"
           @click="store.load"
         >
-          <AppIcon name="database" :size="17" />
           새로고침
         </button>
       </div>

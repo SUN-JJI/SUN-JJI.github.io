@@ -34,7 +34,7 @@ function selectScenario(id: string) {
         <h1><strong>Leaderboard</strong></h1>
         <p class="font-medium">팀별 최고 점수와 공식 순위를 확인하세요.</p>
       </div>
-      <button class="primary-button compact" :disabled="store.loading" @click="store.load">
+      <button class="data-page-action refresh-action" :disabled="store.loading" @click="store.load">
         새로고침
       </button>
     </div>

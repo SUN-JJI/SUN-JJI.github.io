@@ -55,7 +55,7 @@ function formatScore(value: number | null) {
         <h1><strong>응시 상세</strong></h1>
         <p class="font-medium">팀별 응시 현황과 회차별 측정 결과를 확인하세요.</p>
       </div>
-      <button class="primary-button compact" :disabled="store.loading" @click="store.load">
+      <button class="data-page-action refresh-action" :disabled="store.loading" @click="store.load">
         새로고침
       </button>
     </div>
