@@ -27,7 +27,8 @@ const scenarioIcon = (index: number) => index === 0 ? 'grid' as const : index ==
         <AppIcon name="trophy" />
       </MetricCard>
       <MetricCard label="시나리오" :value="store.scenarios.length" hint="tasks.json" tone="violet">
-        <AppIcon name="grid" /></MetricCard>
+        <AppIcon name="grid" />
+      </MetricCard>
       <MetricCard label="전체 태스크" :value="store.scenarios.flatMap((item) => item.tasks).length" hint="공개 과제" tone="green">
         <AppIcon name="database" />
       </MetricCard>
@@ -54,7 +55,10 @@ const scenarioIcon = (index: number) => index === 0 ? 'grid' as const : index ==
           <h3><strong>{{ scenario.name }}</strong></h3>
           <p class="font-medium">{{ scenario.description }}</p>
           <div class="task-list">
-            <RouterLink v-for="task in scenario.tasks" :key="task.id" :to="task.status === 'active' ? `/leaderboard/${scenario.id}/${task.id}` : ''" :class="{ disabled: task.status !== 'active' }" :aria-disabled="task.status !== 'active'">
+            <RouterLink v-for="task in scenario.tasks" :key="task.id" 
+              :to="task.status === 'active' ? `/leaderboard/${scenario.id}/${task.id}` : ''" 
+              :class="{ disabled: task.status !== 'active' }" :aria-disabled="task.status !== 'active'"
+            >
               <span class="font-semibold">{{ task.name }}</span>
               <small v-if="task.status !== 'active'">준비 중</small>
               <AppIcon v-else name="chevron" />

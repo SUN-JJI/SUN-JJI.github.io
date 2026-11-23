@@ -53,14 +53,23 @@ function selectScenario(id: string) {
       </div>
       <section v-if="store.scenarios.length" class="leader-tabs" aria-label="리더보드 분류">
         <div class="scenario-tabs" role="tablist" aria-label="시나리오 선택">
-          <button v-for="scenario in store.scenarios" :key="scenario.id" type="button" role="tab" :aria-selected="scenario.id === activeScenario?.id" :aria-controls="`scenario-panel-${scenario.id}`" :disabled="!scenario.tasks.some((task) => task.status === 'active')" :class="{ active: scenario.id === activeScenario?.id, disabled: !scenario.tasks.some((task) => task.status === 'active') }" @click="selectScenario(scenario.id)">
+          <button v-for="scenario in store.scenarios" :key="scenario.id" type="button" role="tab" 
+            :aria-selected="scenario.id === activeScenario?.id" :aria-controls="`scenario-panel-${scenario.id}`" 
+            :disabled="!scenario.tasks.some((task) => task.status === 'active')" 
+            :class="{ active: scenario.id === activeScenario?.id, disabled: !scenario.tasks.some((task) => task.status === 'active') }" 
+            @click="selectScenario(scenario.id)"
+          >
             {{ scenario.name }}
             <small v-if="!scenario.tasks.some((task) => task.status === 'active')">준비 중</small>
           </button>
         </div>
         <div v-if="activeScenario" :id="`scenario-panel-${activeScenario.id}`" class="task-segment-section" role="tabpanel">
           <div class="task-segments" aria-label="세부 태스크 선택">
-            <RouterLink v-for="task in activeScenario.tasks" :key="task.id" :to="task.status === 'active' ? `/leaderboard/${activeScenario.id}/${task.id}` : route.fullPath" :aria-current="task.id === activeTask?.id ? 'page' : undefined" :aria-disabled="task.status !== 'active'" :class="{ disabled: task.status !== 'active' }">
+            <RouterLink v-for="task in activeScenario.tasks" :key="task.id" 
+              :to="task.status === 'active' ? `/leaderboard/${activeScenario.id}/${task.id}` : route.fullPath" 
+              :aria-current="task.id === activeTask?.id ? 'page' : undefined" 
+              :aria-disabled="task.status !== 'active'" :class="{ disabled: task.status !== 'active' }"
+            >
               {{ task.name }}
               <small v-if="task.status !== 'active'">준비 중</small>
             </RouterLink>
@@ -70,7 +79,13 @@ function selectScenario(id: string) {
       <section v-if="activeScenario && activeTask" class="board-section">
         <div class="board-heading">
           <div>
-            <div class="breadcrumb">Leaderboard <AppIcon name="chevron" :size="13" /> {{ activeScenario.name }} <AppIcon name="chevron" :size="13" /> {{ activeTask.name }}</div>
+            <div class="breadcrumb">
+              Leaderboard 
+              <AppIcon name="chevron" :size="13" /> 
+              {{ activeScenario.name }} 
+              <AppIcon name="chevron" :size="13" /> 
+              {{ activeTask.name }}
+            </div>
             <h2><strong>{{ activeTask.leaderboard.title }}</strong></h2>
             <p>{{ activeTask.leaderboard.description }}</p>
           </div>

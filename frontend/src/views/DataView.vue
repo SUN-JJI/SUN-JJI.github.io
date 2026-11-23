@@ -186,9 +186,7 @@ const scenarios = computed(() => store.scenarios.map((scenario) => ({
           </div>
           <span class="download-modal-label">자료 다운로드</span>
           <h2 id="download-modal-title">
-            <strong>{{ unavailableDownload.checkFailed
-              ? '파일 상태를 확인할 수 없습니다.'
-              : '아직 자료가 준비되지 않았습니다.' }}</strong>
+            <strong>{{ unavailableDownload.checkFailed ? '파일 상태를 확인할 수 없습니다.' : '아직 자료가 준비되지 않았습니다.' }}</strong>
           </h2>
           <p class="download-modal-context">
             {{ unavailableDownload.scenario }} · {{ unavailableDownload.task }}

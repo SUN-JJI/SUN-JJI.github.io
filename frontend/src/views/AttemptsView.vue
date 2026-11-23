@@ -81,14 +81,14 @@ function formatScore(value: number | null) {
       <section v-if="store.scenarios.length" class="leader-tabs" aria-label="응시 상세 분류">
         <div class="scenario-tabs" role="tablist" aria-label="시나리오 선택">
           <button v-for="scenario in store.scenarios" 
-          :key="scenario.id" type="button" role="tab" 
-          :aria-selected="scenario.id === activeScenario?.id" 
-          :disabled="!scenario.tasks.some((task) => task.status === 'active')" 
-          :class="{ 
-            active: scenario.id === activeScenario?.id, 
-            disabled: !scenario.tasks.some((task) => task.status === 'active') 
-          }" 
-          @click="selectScenario(scenario.id)"
+            :key="scenario.id" type="button" role="tab" 
+            :aria-selected="scenario.id === activeScenario?.id" 
+            :disabled="!scenario.tasks.some((task) => task.status === 'active')" 
+            :class="{ 
+              active: scenario.id === activeScenario?.id, 
+              disabled: !scenario.tasks.some((task) => task.status === 'active') 
+            }" 
+            @click="selectScenario(scenario.id)"
           >
             {{ scenario.name }}
             <small v-if="!scenario.tasks.some((task) => task.status === 'active')">준비 중</small>
@@ -97,11 +97,11 @@ function formatScore(value: number | null) {
         <div v-if="activeScenario" class="task-segment-section" role="tabpanel">
           <div class="task-segments" aria-label="세부 태스크 선택">
           <RouterLink v-for="task in activeScenario.tasks" 
-          :key="task.id" 
-          :to="task.status === 'active' ? `/attempts/${activeScenario.id}/${task.id}` 
-          : route.fullPath" :aria-current="task.id === activeTask?.id ? 'page' 
-          : undefined" :aria-disabled="task.status !== 'active'" 
-          :class="{ disabled: task.status !== 'active' }"
+            :key="task.id" 
+            :to="task.status === 'active' ? `/attempts/${activeScenario.id}/${task.id}` : route.fullPath" 
+            :aria-current="task.id === activeTask?.id ? 'page' 
+            : undefined" :aria-disabled="task.status !== 'active'" 
+            :class="{ disabled: task.status !== 'active' }"
           >
             {{ task.name }}
             <small v-if="task.status !== 'active'">준비 중</small>
@@ -147,10 +147,10 @@ function formatScore(value: number | null) {
               <tbody>
                 <template v-for="team in teamRows" :key="team.teamId">
                   <tr class="attempt-team-row" 
-                  :class="{ expanded: expandedTeamId === team.teamId }" tabindex="0" 
-                  :aria-expanded="expandedTeamId === team.teamId" 
-                  @click="toggleTeam(team.teamId)" 
-                  @keydown.enter="toggleTeam(team.teamId)"
+                    :class="{ expanded: expandedTeamId === team.teamId }" tabindex="0" 
+                    :aria-expanded="expandedTeamId === team.teamId" 
+                    @click="toggleTeam(team.teamId)" 
+                    @keydown.enter="toggleTeam(team.teamId)"
                   >
                     <td class="team-cell">
                       <span class="team-logo">{{ team.teamName.charAt(0) }}</span>
